@@ -1,0 +1,25 @@
+{
+  "colors": {
+    "primary": "#0055FF",
+    "secondary": "#00AAFF",
+    "heading": "#111827",
+    "body": "#4B5563",
+    "light": "#F8F9FA",
+    "dark": "#1A202C"
+  },
+  "fonts": {
+    "heading": "Inter, sans-serif",
+    "body": "Inter, sans-serif"
+  },
+  "fontWeights": {
+    "heading": 600,
+    "body": 400
+  },
+  "fontSizes": {
+    "h1": "32px",
+    "h2": "24px",
+    "h3": "18px",
+    "body": "16px"
+  },
+  "spacing": [4, 8, 16, 32, 64]
+}
