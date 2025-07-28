@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Passenger Sign Up - CarPal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0066FF',
+            secondary: '#00CCFF',
+            heading: '#111827',
+            body: '#4B5563',
+            light: '#F8F9FA',
+            dark: '#1A202C',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-light font-sans text-body">
+  <!-- Nav -->
+  <nav class="fixed top-0 left-0 w-full bg-white shadow z-50 flex items-center justify-between px-8 py-4">
+    <div class="flex items-center">
+      <a href="index.html" class="flex items-center">
+        <img src="images/CarPalLogo.png" alt="CarPal Logo" class="h-10 mr-3 rounded" />
+        <span class="text-2xl font-bold text-primary tracking-tight">CarPal</span>
+      </a>
+    </div>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html#features" class="text-body hover:text-primary transition">Features</a>
+      <a href="index.html#values" class="text-body hover:text-primary transition">Why CarPal?</a>
+      <a href="index.html#pricing" class="text-body hover:text-primary transition">Pricing</a>
+      <a href="index.html#contact" class="text-body hover:text-primary transition">Contact</a>
+      <a href="login.html" class="ml-4 px-8 py-4 bg-primary text-white rounded-lg shadow hover:scale-105 hover:bg-blue-600 uppercase font-semibold tracking-wider transition-all duration-150">Log In</a>
+    </div>
+  </nav>
+
+  <main class="pt-24 min-h-screen py-12">
+    <div class="max-w-2xl mx-auto px-6">
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <div class="w-20 h-20 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-6">
+          <svg width="40" height="40" fill="none" viewBox="0 0 40 40">
+            <circle cx="20" cy="20" r="18" stroke="white" stroke-width="2"/>
+            <path d="M10 25c0-2.21 2.686-4 6-4s6 1.79 6 4" stroke="white" stroke-width="2"/>
+            <circle cx="20" cy="15" r="4" stroke="white" stroke-width="2"/>
+          </svg>
+        </div>
+        <h1 class="text-heading text-4xl font-bold mb-4">Sign Up as Passenger</h1>
+        <p class="text-body text-lg">Looking for reliable rides to and from Mount Carmel? Connect with student drivers in your area.</p>
+      </div>
+
+      <!-- Signup Form -->
+      <div class="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+        <form id="passengerSignupForm" class="space-y-6">
+          <!-- Personal Information -->
+          <div class="space-y-4">
+            <h3 class="text-heading text-xl font-semibold border-b border-gray-200 pb-2">Personal Information</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="email" class="block text-body font-semibold mb-2">Email Address *</label>
+                <input type="email" id="email" name="email" required 
+                       class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+                       placeholder="your.email@mchs.org">
+                <p class="text-sm text-gray-500 mt-1">Must be a Mount Carmel email address</p>
+              </div>
+              
+              <div>
+                <label for="password" class="block text-body font-semibold mb-2">Password *</label>
+                <input type="password" id="password" name="password" required 
+                       class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+                       placeholder="Create a secure password">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="fullName" class="block text-body font-semibold mb-2">Full Name *</label>
+                <input type="text" id="fullName" name="fullName" required 
+                       class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+                       placeholder="Your full name">
+              </div>
+              
+              <div>
+                <label for="phoneNumber" class="block text-body font-semibold mb-2">Phone Number *</label>
+                <input type="tel" id="phoneNumber" name="phoneNumber" required 
+                       class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+                       placeholder="(555) 123-4567">
+              </div>
+            </div>
+
+            <div>
+              <label for="address" class="block text-body font-semibold mb-2">Home Address *</label>
+              <input type="text" id="address" name="address" required 
+                     class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+                     placeholder="Your home address">
+            </div>
+          </div>
+
+          <!-- Schedule Information -->
+          <div class="space-y-4">
+            <h3 class="text-heading text-xl font-semibold border-b border-gray-200 pb-2">Schedule Information</h3>
+            
+            <div>
+              <label for="extracurriculars" class="block text-body font-semibold mb-2">Extracurricular Activities *</label>
+              <textarea id="extracurriculars" name="extracurriculars" rows="3" required 
+                        class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 resize-none"
+                        placeholder="List your extracurricular activities (e.g., Math Club, Soccer, Band)"></textarea>
+            </div>
+
+            <div>
+              <label for="scheduleConsistency" class="block text-body font-semibold mb-2">Schedule Consistency *</label>
+              <textarea id="scheduleConsistency" name="scheduleConsistency" rows="2" required 
+                        class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 resize-none"
+                        placeholder="Is your schedule consistent year-round? If not, please explain any variations (e.g., different times for sports seasons, summer schedule changes, etc.)"></textarea>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="leaveForSchoolTime" class="block text-body font-semibold mb-2">Departure Time for School *</label>
+                <input type="time" id="leaveForSchoolTime" name="leaveForSchoolTime" required 
+                       class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200">
+              </div>
+              
+              <div>
+                <label for="finishExtracurriculars" class="block text-body font-semibold mb-2">Extracurriculars End Time *</label>
+                <input type="time" id="finishExtracurriculars" name="finishExtracurriculars" required 
+                       class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200">
+              </div>
+            </div>
+          </div>
+
+          <!-- Emergency Contacts -->
+          <div class="space-y-4">
+            <h3 class="text-heading text-xl font-semibold border-b border-gray-200 pb-2">Emergency Contacts</h3>
+            
+            <div>
+              <label for="parentContactInfo" class="block text-body font-semibold mb-2">Parent/Guardian Contact *</label>
+              <textarea id="parentContactInfo" name="parentContactInfo" rows="2" required 
+                        class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 resize-none"
+                        placeholder="Parent/Guardian name, phone, and email"></textarea>
+            </div>
+          </div>
+
+          <!-- Payment Information -->
+          <div class="space-y-4">
+            <h3 class="text-heading text-xl font-semibold border-b border-gray-200 pb-2">Payment Method</h3>
+            
+            <div>
+              <label for="paymentMethod" class="block text-body font-semibold mb-2">Preferred Payment Method *</label>
+              <select id="paymentMethod" name="paymentMethod" required 
+                      class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200">
+                <option value="">Select payment method</option>
+                <option value="Credit Card">Credit Card</option>
+                <option value="Debit Card">Debit Card</option>
+                <option value="Cash">Cash</option>
+                <option value="Venmo">Venmo</option>
+                <option value="PayPal">PayPal</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Error Message -->
+          <div id="signupError" class="text-red-600 text-sm hidden"></div>
+
+          <!-- Submit Button -->
+          <button type="submit" 
+                  class="w-full px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-xl shadow-lg hover:shadow-xl hover:scale-105 uppercase font-semibold tracking-wider transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
+            Create Passenger Account
+          </button>
+        </form>
+
+        <div class="text-center mt-6">
+          <span class="text-body">Already have an account?</span>
+          <a href="login.html" class="text-primary font-semibold hover:underline ml-1">Log in</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const form = document.getElementById('passengerSignupForm');
+    const errorDiv = document.getElementById('signupError');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      errorDiv.textContent = '';
+      errorDiv.classList.add('hidden');
+
+      const formData = new FormData(form);
+      const data = {
+        email: formData.get('email'),
+        password: formData.get('password'),
+        fullName: formData.get('fullName'),
+        phoneNumber: formData.get('phoneNumber'),
+        address: formData.get('address'),
+        leaveForSchoolTime: formData.get('leaveForSchoolTime'),
+        finishExtracurriculars: formData.get('finishExtracurriculars'),
+        extracurriculars: formData.get('extracurriculars'),
+        scheduleConsistency: formData.get('scheduleConsistency'),
+        parentContactInfo: formData.get('parentContactInfo'),
+        paymentMethod: formData.get('paymentMethod'),
+        role: 'passenger'
+      };
+
+      try {
+        const response = await fetch('/api/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          // Success - redirect to success page
+          window.location.href = 'success.html?role=passenger';
+        } else {
+          // Show error message
+          errorDiv.textContent = result.message || 'Signup failed. Please try again.';
+          errorDiv.classList.remove('hidden');
+        }
+      } catch (error) {
+        errorDiv.textContent = 'Network error. Please check your connection and try again.';
+        errorDiv.classList.remove('hidden');
+      }
+    });
+  </script>
+</body>
+</html>

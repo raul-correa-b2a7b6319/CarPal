@@ -1,0 +1,20 @@
+{
+  "name": "CarPal",
+  "version": "1.0.0",
+  "description": "CarPal rideshare service for Mount Carmel High School students",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "csv-parser": "^3.2.0",
+    "csv-writer": "^1.6.0",
+    "express": "^4.21.2"
+  }
+}

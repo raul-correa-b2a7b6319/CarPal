@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Success - CarPal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0066FF',
+            secondary: '#00CCFF',
+            heading: '#111827',
+            body: '#4B5563',
+            light: '#F8F9FA',
+            dark: '#1A202C',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    @keyframes checkmark {
+      0% { transform: scale(0); opacity: 0; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes fadeInUp {
+      0% { transform: translateY(20px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    .animate-checkmark {
+      animation: checkmark 0.6s ease-out forwards;
+    }
+    .animate-fadeInUp {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    .animate-pulse-slow {
+      animation: pulse 2s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="bg-light font-sans text-body">
+  <!-- Nav -->
+  <nav class="fixed top-0 left-0 w-full bg-white shadow z-50 flex items-center justify-between px-8 py-4">
+    <div class="flex items-center">
+      <a href="index.html" class="flex items-center">
+        <img src="images/CarPalLogo.png" alt="CarPal Logo" class="h-10 mr-3 rounded" />
+        <span class="text-2xl font-bold text-primary tracking-tight">CarPal</span>
+      </a>
+    </div>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html#features" class="text-body hover:text-primary transition">Features</a>
+      <a href="index.html#values" class="text-body hover:text-primary transition">Why CarPal?</a>
+      <a href="index.html#pricing" class="text-body hover:text-primary transition">Pricing</a>
+      <a href="index.html#contact" class="text-body hover:text-primary transition">Contact</a>
+      <a href="login.html" class="ml-4 px-8 py-4 bg-primary text-white rounded-lg shadow hover:scale-105 hover:bg-blue-600 uppercase font-semibold tracking-wider transition-all duration-150">Log In</a>
+    </div>
+  </nav>
+
+  <main class="pt-24 min-h-screen flex items-center justify-center px-4">
+    <div class="w-full max-w-2xl mx-auto">
+      <!-- Success Card -->
+      <div class="bg-white rounded-3xl shadow-2xl p-12 border border-gray-100 relative overflow-hidden">
+        <!-- Background gradient -->
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5"></div>
+        
+        <!-- Success Icon -->
+        <div class="relative z-10 text-center mb-8">
+          <div class="w-24 h-24 bg-gradient-to-r from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse-slow">
+            <svg class="w-12 h-12 text-white animate-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Success Message -->
+        <div class="relative z-10 text-center animate-fadeInUp">
+          <h1 class="text-heading text-4xl font-bold mb-4">Application Submitted!</h1>
+          <p class="text-body text-xl mb-8 leading-relaxed">
+            Your CarPal account has been successfully created. We're excited to have you join our community!
+          </p>
+          
+          <!-- Role-specific message -->
+          <div id="roleMessage" class="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-xl p-6 mb-8 border border-primary/20">
+            <h3 class="text-heading text-lg font-semibold mb-2">What's Next?</h3>
+            <p id="nextSteps" class="text-body">
+              <!-- This will be populated by JavaScript -->
+            </p>
+          </div>
+
+          <!-- Progress indicator -->
+          <div class="flex items-center justify-center space-x-4 mb-8">
+            <div class="flex items-center">
+              <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+              </div>
+              <span class="ml-2 text-sm text-green-600 font-medium">Account Created</span>
+            </div>
+            <div class="w-8 h-1 bg-gray-200 rounded"></div>
+            <div class="flex items-center">
+              <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                <span class="text-white text-sm font-bold">2</span>
+              </div>
+              <span class="ml-2 text-sm text-body">Log In</span>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="login.html" 
+               class="px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-xl shadow-lg hover:shadow-xl hover:scale-105 uppercase font-semibold tracking-wider transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
+              Log In Now
+            </a>
+            <a href="index.html" 
+               class="px-8 py-4 bg-gray-100 text-body rounded-xl shadow hover:shadow-md hover:scale-105 font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2">
+              Back to Home
+            </a>
+          </div>
+        </div>
+
+        <!-- Floating elements -->
+        <div class="absolute top-8 right-8 w-4 h-4 bg-primary opacity-20 rounded-full animate-pulse"></div>
+        <div class="absolute bottom-8 left-8 w-6 h-6 bg-secondary opacity-15 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+      </div>
+
+      <!-- Additional info -->
+      <div class="text-center mt-8">
+        <p class="text-body text-sm">
+          Need help? Contact us at 
+          <a href="mailto:support@carpal.com" class="text-primary hover:underline">support@carpal.com</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Get role from URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const role = urlParams.get('role') || 'user';
+    const userType = urlParams.get('type') || '';
+
+    // Update the message based on role
+    const nextStepsElement = document.getElementById('nextSteps');
+    const roleMessageElement = document.getElementById('roleMessage');
+
+    if (role === 'passenger') {
+      nextStepsElement.innerHTML = `
+        <strong>Passenger Account:</strong> Your profile is now active! We'll match you with drivers based on your schedule and location. 
+        Check your email for confirmation and next steps.
+      `;
+    } else if (role === 'driver') {
+      nextStepsElement.innerHTML = `
+        <strong>Driver Application:</strong> Thank you for applying! Our team will review your application and contact you within 24-48 hours. 
+        We'll schedule a virtual meeting with you and your guardians.
+      `;
+      roleMessageElement.className = 'bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl p-6 mb-8 border border-blue-200';
+    } else {
+      nextStepsElement.innerHTML = `
+        Your account has been successfully created! You can now log in to access your CarPal dashboard and start using our services.
+      `;
+    }
+
+    // Auto-redirect after 8 seconds
+    setTimeout(() => {
+      window.location.href = 'login.html';
+    }, 8000);
+
+    // Add some interactive elements
+    document.addEventListener('DOMContentLoaded', () => {
+      // Add hover effects to buttons
+      const buttons = document.querySelectorAll('a[href]');
+      buttons.forEach(button => {
+        button.addEventListener('mouseenter', () => {
+          button.style.transform = 'translateY(-2px)';
+        });
+        button.addEventListener('mouseleave', () => {
+          button.style.transform = 'translateY(0)';
+        });
+      });
+    });
+  </script>
+</body>
+</html> 

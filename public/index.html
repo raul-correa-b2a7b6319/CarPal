@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CarPal - Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0066FF',
+            secondary: '#00CCFF',
+            heading: '#111827',
+            body: '#4B5563',
+            light: '#F8F9FA',
+            dark: '#1A202C',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          spacing: {
+            4: '1rem',
+            8: '2rem',
+            16: '4rem',
+            32: '8rem',
+            64: '16rem',
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.4s, transform 0.4s; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .animate-fadeIn {
+      animation: fadeIn 0.3s ease-out forwards;
+    }
+    
+    /* Enhanced shadow effects */
+    .shadow-3xl {
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 102, 255, 0.1);
+    }
+    
+    /* Custom animation for floating elements */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    /* Hero section specific styles */
+    .hero-illustration {
+      filter: drop-shadow(0 8px 32px rgba(0, 102, 255, 0.15)) drop-shadow(0 4px 16px rgba(0, 204, 255, 0.1));
+    }
+    
+    /* Responsive typography adjustments */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+        line-height: 1.1;
+      }
+      .hero-subtitle {
+        font-size: 1.125rem;
+        line-height: 1.6;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+    }
+    
+    /* Mobile responsiveness for Who We Are section */
+    @media (max-width: 768px) {
+      .founder-badges {
+        flex-direction: row;
+        justify-content: center;
+        gap: 2rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-light font-sans text-body">
+  <!-- Sticky Nav -->
+  <nav class="fixed top-0 left-0 w-full bg-white shadow z-50 flex items-center justify-between px-8 py-4">
+    <div class="flex items-center">
+      <a href="index.html" class="flex items-center">
+        <img src="images/CarPalLogo.png" alt="CarPal Logo" class="h-10 mr-3 rounded" />
+        <span class="text-2xl font-bold text-primary tracking-tight">CarPal</span>
+      </a>
+    </div>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html" class="text-body hover:text-primary transition font-semibold">Home</a>
+      <a href="#features" class="text-body hover:text-primary transition">Features</a>
+      <a href="#values" class="text-body hover:text-primary transition">Why CarPal?</a>
+      <a href="#pricing" class="text-body hover:text-primary transition">Transparent Pricing</a>
+      <a href="#driver-info" class="text-body hover:text-primary transition">Driver Information</a>
+      <a href="#who-we-are" class="text-body hover:text-primary transition">Who We Are</a>
+      <a href="#contact" class="text-body hover:text-primary transition">Contact</a>
+      <a href="settings.html" class="text-body hover:text-primary transition">Settings</a>
+      <a href="signup.html" class="ml-4 px-8 py-4 bg-primary text-white rounded-lg shadow hover:scale-105 hover:bg-blue-600 uppercase font-semibold tracking-wider transition-all duration-150">Join Now</a>
+    </div>
+    <button id="navToggle" class="md:hidden text-primary focus:outline-none">
+      <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </nav>
+  <!-- Mobile Nav Drawer -->
+  <div id="mobileNav" class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-50 transform translate-x-full transition-transform duration-300 flex flex-col p-8 gap-6 md:hidden">
+    <button id="closeNav" class="self-end mb-8 text-primary"><svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <a href="#features" class="text-body hover:text-primary transition">Features</a>
+    <a href="#values" class="text-body hover:text-primary transition">Why CarPal?</a>
+    <a href="#pricing" class="text-body hover:text-primary transition">Pricing</a>
+    <a href="#contact" class="text-body hover:text-primary transition">Contact</a>
+    <a href="settings.html" class="text-body hover:text-primary transition">Settings</a>
+    <a href="signup.html" class="mt-8 px-8 py-4 bg-primary text-white rounded-lg shadow hover:scale-105 hover:bg-blue-600 uppercase font-semibold tracking-wider transition-all duration-150">Join Now</a>
+  </div>
+  <main class="pt-24">
+    <!-- Hero Section with car-and-key illustration -->
+    <section class="w-full bg-white relative overflow-hidden">
+      <!-- Background gradient and geometric shapes -->
+      <div class="absolute inset-0 bg-gradient-to-br from-white via-[#F8FAFF] to-[#EAF6FF]"></div>
+      
+      <!-- Geometric accent shapes -->
+      <div class="absolute top-20 left-10 w-20 h-20 bg-primary opacity-10 rounded-full blur-xl"></div>
+      <div class="absolute top-40 right-20 w-16 h-16 bg-secondary opacity-15 rounded-full blur-xl"></div>
+      <div class="absolute bottom-20 left-1/4 w-12 h-12 bg-primary opacity-10 transform rotate-45 blur-lg"></div>
+      <div class="absolute top-1/3 right-1/3 w-8 h-8 bg-secondary opacity-15 rounded-full blur-md"></div>
+      
+      <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12 px-6 md:px-12 py-24 md:py-32 relative z-10">
+        <!-- Left side: Text content -->
+        <div class="flex-1 flex flex-col items-start justify-center text-left">
+          <h1 class="hero-title text-heading text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6" style="letter-spacing:-0.02em; line-height: 1.1;">
+            Made For Students, By Students
+          </h1>
+          <p class="hero-subtitle text-body text-lg md:text-xl mb-10 leading-relaxed" style="line-height: 1.5;">
+            Affordable rides for Mount Carmel High School students.
+          </p>
+          <a href="signup.html" class="group inline-block px-14 py-5 bg-gradient-to-r from-primary to-secondary text-white rounded-xl shadow-xl font-semibold uppercase tracking-wider text-lg hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 relative overflow-hidden">
+            <span class="relative z-10">Join Now</span>
+            <div class="absolute inset-0 bg-gradient-to-r from-secondary to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </a>
+        </div>
+        
+        <!-- Right side: Illustration -->
+        <div class="flex-1 flex items-center justify-center lg:justify-end relative">
+          <div class="relative group">
+            <!-- Drop shadow for the illustration -->
+            <div class="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-2xl blur-xl transform scale-110 opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+            
+            <!-- Illustration container -->
+            <div class="relative bg-gradient-to-br from-white to-[#F8FAFF] rounded-2xl p-8 shadow-2xl border border-primary/10 group-hover:shadow-3xl transition-all duration-300">
+              <img 
+                src="images/HomePage Car.png" 
+                alt="CarPal Car" 
+                class="hero-illustration w-full h-auto max-w-md lg:max-w-lg xl:max-w-xl drop-shadow-lg group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            
+            <!-- Floating accent elements -->
+            <div class="absolute -top-4 -right-4 w-8 h-8 bg-secondary opacity-30 rounded-full animate-float"></div>
+            <div class="absolute -bottom-4 -left-4 w-6 h-6 bg-primary opacity-25 rounded-full animate-float" style="animation-delay: 1s;"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Bottom gradient fade -->
+      <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent"></div>
+    </section>
+    <!-- Features Section -->
+    <section id="features" class="bg-light py-16 fade-up scroll-mt-24">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <h2 class="text-heading text-3xl md:text-4xl font-semibold mb-12 text-center">How CarPal Works</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          <div class="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center shadow hover:shadow-lg transition-all duration-200 col-span-1 sm:col-span-2 md:col-span-4">
+            <svg width="48" height="48" fill="none" viewBox="0 0 48 48"><rect x="8" y="8" width="32" height="32" rx="16" fill="#00AAFF"/><path d="M24 16v8l6 6" stroke="#0055FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="24" r="22" stroke="#E5E7EB" stroke-width="2" fill="none"/></svg>
+            <h3 class="text-heading text-lg font-semibold mt-4 mb-2">How Do We Find A Driver / Passenger?</h3>
+            <p class="text-body text-base text-center">We connect drivers and passengers based on your location, extracurriculars, and your arrival and departure times from Mount Carmel to ensure the best match for your schedule and needs. Our smart matching system ensures drivers and passengers live within 5.5 miles of each other for optimal convenience and reliability.</p>
+          </div>
+          <div class="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center shadow hover:shadow-lg transition-all duration-200">
+            <svg width="48" height="48" fill="none" viewBox="0 0 48 48"><rect x="8" y="20" width="32" height="16" rx="8" fill="#00AAFF"/><circle cx="16" cy="36" r="6" fill="#0055FF"/><circle cx="32" cy="36" r="6" fill="#0055FF"/></svg>
+            <h3 class="text-heading text-lg font-semibold mt-4 mb-2">Easy Sign Up</h3>
+            <p class="text-body text-base text-center">Create your account in seconds with your school email.</p>
+          </div>
+          <div class="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center shadow hover:shadow-lg transition-all duration-200">
+            <svg width="48" height="48" fill="none" viewBox="0 0 48 48"><rect x="12" y="16" width="24" height="16" rx="8" fill="#00AAFF"/><rect x="20" y="8" width="8" height="8" rx="4" fill="#0055FF"/></svg>
+            <h3 class="text-heading text-lg font-semibold mt-4 mb-2">Safe Rides</h3>
+            <p class="text-body text-base text-center">All drivers are vetted and part of your school community.</p>
+          </div>
+          <div class="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center shadow hover:shadow-lg transition-all duration-200">
+            <svg width="48" height="48" fill="none" viewBox="0 0 48 48"><rect x="8" y="24" width="32" height="12" rx="6" fill="#00AAFF"/><rect x="20" y="12" width="8" height="12" rx="4" fill="#0055FF"/></svg>
+            <h3 class="text-heading text-lg font-semibold mt-4 mb-2">Flexible Scheduling</h3>
+            <p class="text-body text-base text-center">Book rides that fit your schedule, not the other way around.</p>
+          </div>
+          <div class="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center shadow hover:shadow-lg transition-all duration-200">
+            <svg width="48" height="48" fill="none" viewBox="0 0 48 48"><rect x="12" y="20" width="24" height="16" rx="8" fill="#00AAFF"/><circle cx="24" cy="36" r="6" fill="#0055FF"/></svg>
+            <h3 class="text-heading text-lg font-semibold mt-4 mb-2">Affordable Pricing</h3>
+            <p class="text-body text-base text-center">Transparent, student-friendly pricing for every ride.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Value Section -->
+    <section id="values" class="bg-white py-16 fade-up scroll-mt-24">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <h2 class="text-heading text-3xl md:text-4xl font-semibold mb-12 text-center">Why Choose CarPal?</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          <div class="bg-light border border-gray-200 rounded-xl p-6 flex flex-col items-center shadow hover:shadow-lg transition-all duration-200">
+            <svg width="48" height="48" fill="none" viewBox="0 0 48 48"><rect x="8" y="20" width="32" height="16" rx="8" fill="#00AAFF"/><rect x="20" y="8" width="8" height="8" rx="4" fill="#0055FF"/></svg>
+            <h3 class="text-heading text-lg font-semibold mt-4 mb-2">Student Community</h3>
+            <p class="text-body text-base text-center">Ride with fellow students for a safer, friendlier experience.</p>
+          </div>
+          <div class="bg-light border border-gray-200 rounded-xl p-6 flex flex-col items-center shadow hover:shadow-lg transition-all duration-200">
+            <svg width="48" height="48" fill="none" viewBox="0 0 48 48"><rect x="12" y="16" width="24" height="16" rx="8" fill="#00AAFF"/><circle cx="24" cy="36" r="6" fill="#0055FF"/></svg>
+            <h3 class="text-heading text-lg font-semibold mt-4 mb-2">Door-to-Door</h3>
+            <p class="text-body text-base text-center">Get picked up and dropped off right at your door.</p>
+          </div>
+          <div class="bg-light border border-gray-200 rounded-xl p-6 flex flex-col items-center shadow hover:shadow-lg transition-all duration-200">
+            <svg width="48" height="48" fill="none" viewBox="0 0 48 48"><rect x="8" y="24" width="32" height="12" rx="6" fill="#00AAFF"/><rect x="20" y="12" width="8" height="12" rx="4" fill="#0055FF"/></svg>
+            <h3 class="text-heading text-lg font-semibold mt-4 mb-2">Transparent</h3>
+            <p class="text-body text-base text-center">No hidden fees. Know your fare before you ride.</p>
+          </div>
+          <div class="bg-light border border-gray-200 rounded-xl p-6 flex flex-col items-center shadow hover:shadow-lg transition-all duration-200">
+            <svg width="48" height="48" fill="#00AAFF" viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="#00AAFF" fill-opacity="0.15"/><rect x="16" y="16" width="16" height="16" rx="8" fill="#0055FF"/></svg>
+            <h3 class="text-heading text-lg font-semibold mt-4 mb-2">Always Reliable</h3>
+            <p class="text-body text-base text-center">Count on CarPal for every school day and event.</p>
+          </div>
+        </div>
+        
+        <!-- Price Savings Section -->
+        <div class="mt-16 bg-gradient-to-r from-primary/5 to-secondary/5 border border-primary/20 rounded-2xl p-8 shadow-lg">
+          <div class="text-center mb-8">
+            <h3 class="text-heading text-2xl md:text-3xl font-bold mb-4">Price Savings</h3>
+            <p class="text-body text-lg max-w-3xl mx-auto">You'd save $686.36 at just about absolute worst case scenario using us instead of Mount Carmel's round trip bus service. If you lived the furthest distance possible from your driver. So you're making new upperclassmen friends, getting to school on time, and saving money have you ever heard of such a good deal?</p>
+          </div>
+          
+          <!-- Calculation Display -->
+          <div class="bg-white rounded-xl p-6 shadow-md max-w-4xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <!-- Mount Carmel Cost -->
+              <div class="text-center">
+                <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
+                  <h4 class="text-red-700 font-semibold text-lg mb-2">Mount Carmel's Round Trip Bus Fare</h4>
+                  <span class="text-red-600 text-3xl font-bold">$1,550</span>
+                </div>
+              </div>
+              
+              <!-- CarPal Cost -->
+              <div class="text-center">
+                <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
+                  <h4 class="text-green-700 font-semibold text-lg mb-2">CarPal Total Cost</h4>
+                  <span class="text-green-600 text-3xl font-bold">$863.64</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Calculation Breakdown -->
+            <div class="bg-gray-50 rounded-lg p-6 mt-6">
+              <h5 class="text-heading font-semibold text-lg mb-4 text-center">Calculation Breakdown</h5>
+              <div class="space-y-3 text-sm">
+                <div class="flex justify-between items-center">
+                  <span class="text-body">Round Trip Distance:</span>
+                  <span class="font-semibold">2 × 5.5 miles = 11 miles</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-body">Fuel Consumption:</span>
+                  <span class="font-semibold">11 miles ÷ 12 MPG = 0.917 gallons</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-body">Fuel Cost:</span>
+                  <span class="font-semibold">0.917 × $3.417 = $3.13</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-body">Driver Fee:</span>
+                  <span class="font-semibold">$1.00</span>
+                </div>
+                <div class="flex justify-between items-center border-t pt-2">
+                  <span class="text-body font-semibold">Cost per Trip:</span>
+                  <span class="font-bold text-primary">$4.13</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-body font-semibold">Annual Cost (209 weekdays):</span>
+                  <span class="font-bold text-primary">$4.13 × 209 = $863.64</span>
+                </div>
+                <div class="flex justify-between items-center border-t pt-2 bg-primary/10 rounded-lg p-3">
+                  <span class="text-heading font-bold text-lg">Total Savings:</span>
+                  <span class="text-primary font-bold text-2xl">$686.36</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Pricing Section -->
+    <section id="pricing" class="bg-light py-16 fade-up scroll-mt-24">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <h2 class="text-heading text-3xl md:text-4xl font-semibold mb-12 text-center">Transparent Pricing</h2>
+        <div class="flex flex-col md:flex-row gap-8 justify-center items-stretch">
+          <div class="bg-white border border-gray-200 rounded-xl p-8 flex-1 shadow hover:shadow-lg transition-all duration-200 flex flex-col items-center">
+            <h3 class="text-heading text-xl font-semibold mb-2">Standard Ride</h3>
+            <p class="text-body mb-4">(2 × Miles Driven To Passenger / Car MPG) × Gas Cost + $1.00</p>
+            <span class="text-primary text-3xl font-bold mb-2">$1–$6</span>
+            <p class="text-body text-sm">Typical round trip</p>
+          </div>
+          <div class="bg-white border border-gray-200 rounded-xl p-8 flex-1 shadow hover:shadow-lg transition-all duration-200 flex flex-col items-center">
+            <h3 class="text-heading text-xl font-semibold mb-2">Carpool Discount</h3>
+            <p class="text-body mb-4">Share a ride, save more!</p>
+            <span class="text-primary text-3xl font-bold mb-2">Up to 15% off</span>
+            <p class="text-body text-sm">For groups of 2–4 students</p>
+          </div>
+      </div>
+    </div>
+    </section>
+    <!-- After Transparent Pricing section -->
+    <section id="driver-info" class="bg-white py-16 fade-up scroll-mt-24">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <div class="flex flex-col items-center mb-12">
+          <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-primary to-secondary mb-4">
+            <svg width="28" height="28" fill="none" viewBox="0 0 28 28"><circle cx="14" cy="14" r="13" stroke="#E0E0E0" stroke-width="2"/><path d="M7 18c0-2.21 3.134-4 7-4s7 1.79 7 4" stroke="#00AAFF" stroke-width="2"/><circle cx="14" cy="11" r="4" stroke="#0055FF" stroke-width="2"/></svg>
+          </span>
+          <h2 class="text-heading text-4xl font-semibold mb-2 flex items-center">Driver Information</h2>
+        </div>
+        <!-- Card grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+          <!-- Card 1 -->
+          <div class="driver-flip-card group bg-white border border-[#E0E0E0] rounded-xl p-6 transition-transform duration-200 ease-out hover:scale-105 hover:shadow-lg relative cursor-pointer" tabindex="0">
+            <div class="driver-flip-front">
+              <h3 class="text-heading text-2xl font-medium mb-2">License Duration</h3>
+              <p class="text-[#444444] text-base">At least 4 months with a valid driver’s license.</p>
+            </div>
+            <div class="driver-flip-back absolute inset-0 flex flex-col items-center justify-center bg-[#F4F6F8] rounded-xl p-6 text-center" style="display:none;">
+              <svg width="32" height="32" fill="none" viewBox="0 0 32 32"><rect x="4" y="8" width="24" height="16" rx="8" fill="#00AAFF"/><circle cx="12" cy="20" r="4" fill="#0055FF"/><circle cx="20" cy="20" r="4" fill="#0055FF"/></svg>
+              <span class="mt-2 text-base text-[#1A1A1A]">You must have held your license for at least 4 months before applying.</span>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="driver-flip-card group bg-white border border-[#E0E0E0] rounded-xl p-6 transition-transform duration-200 ease-out hover:scale-105 hover:shadow-lg relative cursor-pointer" tabindex="0">
+            <div class="driver-flip-front">
+              <h3 class="text-heading text-2xl font-medium mb-2">Insurance Required</h3>
+              <p class="text-[#444444] text-base">Your vehicle must be insured at all times.</p>
+            </div>
+            <div class="driver-flip-back absolute inset-0 flex flex-col items-center justify-center bg-[#F4F6F8] rounded-xl p-6 text-center" style="display:none;">
+              <svg width="32" height="32" fill="none" viewBox="0 0 32 32"><rect x="8" y="12" width="16" height="8" rx="4" fill="#00AAFF"/><rect x="12" y="8" width="8" height="8" rx="4" fill="#0055FF"/></svg>
+              <span class="mt-2 text-base text-[#1A1A1A]">Proof of insurance is required for all drivers.</span>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="driver-flip-card group bg-white border border-[#E0E0E0] rounded-xl p-6 transition-transform duration-200 ease-out hover:scale-105 hover:shadow-lg relative cursor-pointer" tabindex="0">
+            <div class="driver-flip-front">
+              <h3 class="text-heading text-2xl font-medium mb-2">Accident Limit</h3>
+              <p class="text-[#444444] text-base">No more than 1 car accident on record.</p>
+            </div>
+            <div class="driver-flip-back absolute inset-0 flex flex-col items-center justify-center bg-[#F4F6F8] rounded-xl p-6 text-center" style="display:none;">
+              <svg width="32" height="32" fill="none" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="#00AAFF"/><rect x="12" y="12" width="8" height="8" rx="4" fill="#0055FF"/></svg>
+              <span class="mt-2 text-base text-[#1A1A1A]">Drivers with more than 1 accident are not eligible.</span>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="driver-flip-card group bg-white border border-[#E0E0E0] rounded-xl p-6 transition-transform duration-200 ease-out hover:scale-105 hover:shadow-lg relative cursor-pointer" tabindex="0">
+            <div class="driver-flip-front">
+              <h3 class="text-heading text-2xl font-medium mb-2">Safety Responsibility</h3>
+              <p class="text-[#444444] text-base">Drivers are responsible for passenger safety.</p>
+            </div>
+            <div class="driver-flip-back absolute inset-0 flex flex-col items-center justify-center bg-[#F4F6F8] rounded-xl p-6 text-center" style="display:none;">
+              <svg width="32" height="32" fill="none" viewBox="0 0 32 32"><rect x="8" y="8" width="16" height="16" rx="8" fill="#00AAFF"/><rect x="14" y="14" width="4" height="4" rx="2" fill="#0055FF"/></svg>
+              <span class="mt-2 text-base text-[#1A1A1A]">You must agree to prioritize the safety and comfort of your passengers at all times.</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-center">
+          <button id="viewAllDriverReqs" class="px-8 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold shadow transition-all duration-200 hover:scale-105 focus:outline-primary">View all requirements</button>
+        </div>
+        <div id="driverExtraReqs" class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8" style="display:none;">
+          <!-- Card 5 -->
+          <div class="driver-flip-card group bg-white border border-[#E0E0E0] rounded-xl p-6 transition-transform duration-200 ease-out hover:scale-105 hover:shadow-lg relative cursor-pointer" tabindex="0">
+            <div class="driver-flip-front">
+              <h3 class="text-heading text-2xl font-medium mb-2">Guardian Meeting</h3>
+              <p class="text-[#444444] text-base">Virtual meeting with guardians and CarPal required.</p>
+            </div>
+            <div class="driver-flip-back absolute inset-0 flex flex-col items-center justify-center bg-[#F4F6F8] rounded-xl p-6 text-center" style="display:none;">
+              <svg width="32" height="32" fill="none" viewBox="0 0 32 32"><rect x="8" y="12" width="16" height="8" rx="4" fill="#00AAFF"/><rect x="12" y="8" width="8" height="8" rx="4" fill="#0055FF"/></svg>
+              <span class="mt-2 text-base text-[#1A1A1A]">A virtual meeting ensures everyone is comfortable and informed.</span>
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div class="driver-flip-card group bg-white border border-[#E0E0E0] rounded-xl p-6 transition-transform duration-200 ease-out hover:scale-105 hover:shadow-lg relative cursor-pointer" tabindex="0">
+            <div class="driver-flip-front">
+              <h3 class="text-heading text-2xl font-medium mb-2">Professionalism</h3>
+              <p class="text-[#444444] text-base">Maintain a clean record and clear communication.</p>
+            </div>
+            <div class="driver-flip-back absolute inset-0 flex flex-col items-center justify-center bg-[#F4F6F8] rounded-xl p-6 text-center" style="display:none;">
+              <svg width="32" height="32" fill="none" viewBox="0 0 32 32"><rect x="8" y="8" width="16" height="16" rx="8" fill="#00AAFF"/><rect x="14" y="14" width="4" height="4" rx="2" fill="#0055FF"/></svg>
+              <span class="mt-2 text-base text-[#1A1A1A]">Drivers must communicate clearly and uphold CarPal’s standards.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Add flip card JS -->
+    <script>
+    document.querySelectorAll('.driver-flip-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.querySelector('.driver-flip-front').style.display = 'none';
+        card.querySelector('.driver-flip-back').style.display = 'flex';
+      });
+      card.addEventListener('mouseleave', () => {
+        card.querySelector('.driver-flip-front').style.display = '';
+        card.querySelector('.driver-flip-back').style.display = 'none';
+      });
+      card.addEventListener('focus', () => {
+        card.querySelector('.driver-flip-front').style.display = 'none';
+        card.querySelector('.driver-flip-back').style.display = 'flex';
+      });
+      card.addEventListener('blur', () => {
+        card.querySelector('.driver-flip-front').style.display = '';
+        card.querySelector('.driver-flip-back').style.display = 'none';
+      });
+    });
+    document.getElementById('viewAllDriverReqs').addEventListener('click', function() {
+      const extra = document.getElementById('driverExtraReqs');
+      if (extra.style.display === 'none') {
+        extra.style.display = '';
+        this.textContent = 'Hide requirements';
+      } else {
+        extra.style.display = 'none';
+        this.textContent = 'View all requirements';
+      }
+    });
+    </script>
+    <!-- Who We Are Section -->
+    <section id="who-we-are" class="bg-white py-16 fade-up scroll-mt-24">
+      <div class="max-w-4xl mx-auto px-8 py-16 bg-white border border-[#E0E0E0] rounded-xl shadow-sm">
+        <div class="flex flex-col items-center mb-12">
+          <h2 class="text-[#1A1A1A] text-4xl font-semibold mb-4 text-center">Who We Are</h2>
+          <div class="w-20 h-1 bg-gradient-to-r from-[#0066FF] to-[#00CCFF] rounded-full opacity-0 animate-fadeIn"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-10 gap-8 items-start">
+          <!-- Left Column: Numbered Badges -->
+          <div class="md:col-span-3 flex flex-col items-center md:items-start">
+            <ul class="founder-badges space-y-6">
+              <li class="flex flex-col items-center">
+                <div class="badge w-16 h-16 bg-gradient-to-r from-[#0066FF] to-[#00CCFF] rounded-full flex items-center justify-center text-white text-2xl font-semibold shadow-lg hover:scale-110 hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#0066FF] focus:ring-offset-2">
+                  1
+                </div>
+                <div class="badge-label mt-2 text-base font-medium text-[#444444] text-center">Raul Correa</div>
+              </li>
+              <li class="flex flex-col items-center">
+                <div class="badge w-16 h-16 bg-gradient-to-r from-[#0066FF] to-[#00CCFF] rounded-full flex items-center justify-center text-white text-2xl font-semibold shadow-lg hover:scale-110 hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#0066FF] focus:ring-offset-2">
+                  2
+                </div>
+                <div class="badge-label mt-2 text-base font-medium text-[#444444] text-center">Damian Resendez</div>
+              </li>
+              <li class="flex flex-col items-center">
+                <div class="badge w-16 h-16 bg-gradient-to-r from-[#0066FF] to-[#00CCFF] rounded-full flex items-center justify-center text-white text-2xl font-semibold shadow-lg hover:scale-110 hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#0066FF] focus:ring-offset-2">
+                  3
+                </div>
+                <div class="badge-label mt-2 text-base font-medium text-[#444444] text-center">Jacob Ferguson</div>
+              </li>
+      </ul>
+          </div>
+          
+          <!-- Right Column: Text Content -->
+          <div class="md:col-span-7">
+            <div class="space-y-6">
+              <p class="text-[#444444] text-lg leading-relaxed max-w-[60ch]">
+                We are three Mount Carmel High School students ('24) who were frustrated by the high cost of transportation and the inconvenience of early bus schedules. Determined to find a better solution, we built CarPal, a student-driven ride-share service designed for our community.
+              </p>
+              <p class="text-[#444444] text-lg leading-relaxed max-w-[60ch]">
+                Our innovative approach was recognized when we won a <span class="highlight-badge inline-block bg-gradient-to-r from-[#0066FF] to-[#00CCFF] text-white px-3 py-1 rounded-full text-base font-medium ml-2 focus:outline-none focus:ring-2 focus:ring-[#0066FF] focus:ring-offset-1">$2,500 pitch competition</span>. We're committed to making safe, affordable, and reliable transportation accessible to all Mount Carmel students.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="bg-white py-16 fade-up">
+      <div class="max-w-2xl mx-auto px-4 md:px-8 text-center">
+        <h2 class="text-heading text-3xl md:text-4xl font-semibold mb-8">Get in Touch</h2>
+        <p class="text-body mb-8">Questions? Want to become a driver or passenger? Email us at <a href="mailto:info@carpal.com" class="text-primary hover:underline">info@carpal.com</a></p>
+        <a href="signup.html" class="inline-block px-12 py-4 bg-primary text-white rounded-lg shadow-lg font-semibold uppercase tracking-wider text-lg hover:scale-105 hover:bg-blue-600 transition-all duration-150">Sign Up</a>
+    </div>
+    </section>
+  </main>
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-8 mt-16">
+    <div class="flex flex-col items-center">
+      <img src="images/CarPalLogo.png" alt="CarPal Logo" class="h-10 mb-2 rounded" />
+      <span class="text-lg font-semibold tracking-wide">CarPal</span>
+      <span class="mt-2 text-sm">&copy; 2025 CarPal Ride Service - Made For Students, By Students</span>
+    </div>
+  </footer>
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    const closeNav = document.getElementById('closeNav');
+    navToggle.addEventListener('click', () => mobileNav.classList.remove('translate-x-full'));
+    closeNav.addEventListener('click', () => mobileNav.classList.add('translate-x-full'));
+    // Fade-up on scroll
+    function onScrollFadeUp() {
+      document.querySelectorAll('.fade-up').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) {
+          el.classList.add('visible');
+          
+          // Trigger underline animation for Who We Are section
+          if (el.id === 'who-we-are') {
+            const underline = el.querySelector('.animate-fadeIn');
+            if (underline && !underline.classList.contains('animated')) {
+              underline.classList.add('animated');
+              setTimeout(() => {
+                underline.style.opacity = '1';
+              }, 100);
+            }
+          }
+        }
+      });
+    }
+    window.addEventListener('scroll', onScrollFadeUp);
+    window.addEventListener('DOMContentLoaded', onScrollFadeUp);
+  </script>
+</body>
+</html>

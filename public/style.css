@@ -1,0 +1,9 @@
+/* Keep only custom styles for non-landing pages. Remove global resets, container, hero, and button styles that are now handled by Tailwind. */
+
+/* Example: Custom styles for settings, login, signup, etc. */
+.warning {
+  color: red;
+  font-weight: 600;
+}
+
+/* You can add more custom styles for forms or legacy pages below */
