@@ -6,7 +6,7 @@ CarPal is a peer‑to‑peer rideshare platform built specifically for high scho
 
 ## 🎥 Demo Video
 
-Watch the full 13‑minute demo walkthrough:
+Watch the full 14‑minute demo walkthrough:
 [CarPal Demo Video](https://www.loom.com/share/7a1a0a99010740caa7439e5378e91f10?sid=8459fc65-dcd6-4be2-a691-c0d9f9a3d43f)
 
 ---
